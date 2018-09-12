@@ -3,4 +3,4 @@ project(Backend)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Backend main.cpp)
+add_executable(Backend main.cpp include/Tree.h include/matrix.h include/team.h include/Group.h include/Team.h include/Match.h include/Date.h)

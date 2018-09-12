@@ -82,6 +82,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/Date.h">
+			<Option target="Backend"/>
+		</Unit>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/Group.h">
+			<Option target="Backend"/>
+		</Unit>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/Match.h">
+			<Option target="Backend"/>
+		</Unit>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/Team.h">
+			<Option target="Backend"/>
+		</Unit>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/Tree.h">
+			<Option target="Backend"/>
+		</Unit>
+		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/include/matrix.h">
+			<Option target="Backend"/>
+		</Unit>
 		<Unit filename="C:/Users/Hsim_WONG/Desktop/WC/Backend/main.cpp">
 			<Option target="Backend"/>
 		</Unit>
