@@ -1,9 +1,12 @@
+# 给每个球队编码
+
 import json 
 
 
 with open('groups.json','r') as f:
 	data = f.read()
 new_dict = json.loads(data)
+
 js = {}
 print(new_dict['name'])
 for group in new_dict['groups']:

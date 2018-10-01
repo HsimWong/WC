@@ -24,11 +24,8 @@ def get_event_list(match_url):
 	goal_time_pars = bs_obj.findAll('span', {'class':'fi-mh__scorer__minute'})
 	start_time = bs_obj.findAll('div',{'class':'fi-mu__info__datetime'})[0].get_text()
 	start_time = start_time[start_time.find(' 2018') - 6:start_time.find(' 2018') + 13]
-	# p
-	# print(datetime_struct.strftime('%d %m %Y - %H:%M'))
 	start_time = datetime.datetime.strptime(start_time,'%d %b %Y - %H:%M')
-	# print(str(start_time))
-	# print(type(start_time))
+
 	goal_list = {}
 	# goal_time = []
 	for i in range(len(goal_list_pars)):
@@ -37,7 +34,7 @@ def get_event_list(match_url):
 
 		if not string[0] == '@':
 			if not len(time) == 3:
-				time = str(int(time[0:2]) + int(time[len(time) - 2]))
+				time = str(int(time[0:time.find("'")]) + int(time[len(time) - 2]))
 			else:
 				time = time[0:2]
 			if int(time) >= 45:
@@ -46,17 +43,26 @@ def get_event_list(match_url):
 			full_time = str(start_time + datetime.timedelta(minutes = int(time)))
 			goal_list.update({full_time:string})
 
-	# for time_par in goal_time
-
 	print((goal_list))
+	return goal_list
 
-# GMT
-# def get_match_time
+def get_match_list():
+	url_list = []
+	url = 'https://www.fifa.com/worldcup/matches/#groupphase'
+	r = str(requests.get(url).content,'utf-8')
+	bs_obj = bs(r,'html.parser')
+	id_pars = bs_obj.findAll('a',{'class':'fi-mu__link'})
+	for item in id_pars:
+		url_list.append('https://www.fifa.com' + item['href'])
+	return url_list
 
-def get_match_list
+if __name__ == '__main__':
+	url_list = get_match_list()
+	event_list = []
+	for url in url_list:
+		print(url)
+		event_list.extend(get_event_list(url))
 
-
-
-
-url = 'https://www.fifa.com/worldcup/matches/match/300331503/#match-lineups'
-get_event_list(url)
+	jso = json.dumps(event_list)
+	with open('event_list.json','w') as f:
+		f.write(jso)
