@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup as bs
 def get_team_url_list():
     ret = []
     addr = 'https://www.fifa.com/worldcup/teams/'
-    r = requests.get(addr).text
+    r = str(requests.get(addr).content, 'utf-8')
     bs_obj = bs(r, "html.parser")
     teams = bs_obj.findAll("a", {"class": "fi-o-media-object__link"})
     # res = int(str(listo[0])[62:67])
@@ -40,6 +40,7 @@ def get_player_dic(url):
 	# print(team_name)
 	# print((num_list))
 	for i in range(len(person_tab)):
+		
 		if i < 23:
 			num = num_list[i].get_text()
 		elif i == 23:
@@ -48,16 +49,17 @@ def get_player_dic(url):
 		begin_ind = span.find('>')
 		end_ind = span.find('</span>')
 		name = span[begin_ind+1:end_ind]
-		ret.update({name:num})
-	return team_name,ret
+		info = (num, team_name)
+		ret.update({name:info})
+	return ret
 
 def team_gen():
 	team_urls = get_team_url_list()
 	info_dic = {}
 
 	for url in team_urls:
-		team, player_list = get_player_dic(url)
-		info_dic.update({team:player_list})
+		player_list = get_player_dic(url)
+		info_dic.update(player_list)
 
 	return info_dic
 
