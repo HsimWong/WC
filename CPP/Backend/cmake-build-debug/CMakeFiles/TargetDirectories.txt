@@ -1,3 +1,0 @@
-C:/Users/Hsim_WONG/Desktop/WC/Backend/cmake-build-debug/CMakeFiles/Backend.dir
-C:/Users/Hsim_WONG/Desktop/WC/Backend/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Hsim_WONG/Desktop/WC/Backend/cmake-build-debug/CMakeFiles/rebuild_cache.dir
