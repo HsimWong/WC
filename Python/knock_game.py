@@ -10,3 +10,4 @@ class Knockout_game:
 
 	def get_win(self):
 		ret = Knockout_game()
+		
