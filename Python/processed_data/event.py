@@ -3,6 +3,8 @@ import json
 import datetime
 from bs4 import BeautifulSoup as bs 
 
+
+
 def get_player_num(str):
 	pass
 
@@ -23,6 +25,7 @@ def get_event_list(match_url):
 	}
 
 	r = str(requests.get(match_url).content,'utf-8')
+	print(r)
 	bs_obj = bs(r,'html.parser')
 	goal_list_pars = bs_obj.findAll('span',{'class':'fi-p__nShorter '})
 	goal_time_pars = bs_obj.findAll('span', {'class':'fi-mh__scorer__minute'})
@@ -68,14 +71,14 @@ def get_match_list():
 	return url_list
 
 if __name__ == '__main__':
-	# url_list = get_match_list()
-	# event_list = []
-	# for url in url_list:
-	# 	print(url)
-	# 	event_list.extend(get_event_list(url))
-
-	# jso = json.dumps(event_list)
-	# with open('event_list.json','w') as f:
-	# 	f.write(jso)
 	url = 'https://www.fifa.com/worldcup/matches/match/300331509/'
+	# tmi = ""
+	with open('team_member_info.json','r') as f:
+		tmi = f.read()
+
+	with open('Knockout_country_id.json','r') as f:
+		tid = f.read()
+	tid = json.loads(tid)
+	tmi = json.loads(tmi)
+
 	print(get_event_list(url))
