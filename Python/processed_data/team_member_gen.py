@@ -21,8 +21,11 @@ def get_team_url_list():
     teams = bs_obj.findAll("a", {"class": "fi-o-media-object__link"})
     # res = int(str(listo[0])[62:67])
     for team in teams:
-        ret.append("https://www.fifa.com/worldcup/teams/team/" + (str(team)[62:67]))
-        print(str(team)[62:67])
+        st = "https://www.fifa.com/worldcup/teams/team/" + (str(team)[62:67])
+        if str(team)[62] == "1":
+        	st = 'https://www.fifa.com/worldcup/teams/team/1902465/'
+        print(st)
+        ret.append(st)
     return ret
 
 
@@ -71,3 +74,4 @@ if __name__ == '__main__':
 		f.write(jso)
 
 	print("ok")
+	# print(get_player_dic('https://www.fifa.com/worldcup/teams/team/1902465/'))
