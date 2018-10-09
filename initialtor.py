@@ -3,7 +3,7 @@ varis = []
 className = input("Please input the class Name\n")
 while True:
 	temp_type = input('Please input the type of the varible:\n')
-	if temp_type == -1:
+	if temp_type == '-1':
 		break;
 	else:
 		var_name = input('Please input the name of the variable\n')
@@ -51,3 +51,4 @@ filename = className +'.cpp'
 f = open(filename,'w')
 f.write(string)
 f.close
+

@@ -68,7 +68,7 @@ def get_event_list(match_url):
 
 			else:
 				goal_belong = goaler_team_id
-			ind = [full_time, match_id, goaler_team_id, player_num, og, goal_belong]
+			ind = [full_time, match_id, goaler_team_id, int(player_num), og, goal_belong]
 			goal_list.append(ind)
 			# goal_list.update({full_time:ind})
 
@@ -90,10 +90,10 @@ def get_event_list(match_url):
 		print(team_1_res)
 		for i in range(team_0_res):
 			
-			inf = [full_time,match_id,tid[team_list[0]],'-1',False,tid[team_list[0]]]
+			inf = [full_time,match_id,tid[team_list[0]],-1,False,tid[team_list[0]]]
 			goal_list.append(inf)
 		for i in range(team_1_res):
-			inf = [full_time,match_id,tid[team_list[1]],'-1',False,tid[team_list[1]]]
+			inf = [full_time,match_id,tid[team_list[1]],-1,False,tid[team_list[1]]]
 			goal_list.append(inf)
 
 
