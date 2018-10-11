@@ -1,9 +1,5 @@
 #include<iostream>
+#include "functions.h"
 using namespace std;
 
-string score_path = ""
-
-class Match{
-private:
-	string 
-}
+class 
