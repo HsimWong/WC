@@ -1,14 +1,11 @@
 #include "Stack.h"
 #include<iostream>
+#include "Match.h"
 using namespace std;
 
 
 
 int main(){
-	Stack<int> * a = new Stack<int>();
-	a -> push(5);
-	a -> push(6);
-	cout << (a -> top() -> data);
-	a -> pop();
-	cout << (a -> top() -> data);
+	Match * match = new Match(5);
+	cout << match -> get_match_id();
 }

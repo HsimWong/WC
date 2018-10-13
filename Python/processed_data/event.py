@@ -9,6 +9,7 @@ def get_event_list(match_url):
 	teams = {}
 	goal_list = []
 
+
 	timezone = {"Samara":4,"Nizhny Novgorod":3,"Volgograd":3,
 		"Ekaterinburg":5,"Saransk":3,"Rostov-On-Don":3,"Kaliningrad":2,
 		"Kazan":3,"Sochi":3,"St. Petersburg":3,"Moscow":3
@@ -33,6 +34,7 @@ def get_event_list(match_url):
 		if not team_text[-4:] == 'NAME':
 			team_list.append(team_text)
 	teams.update({team_list[0]: team_list[1], team_list[1]:team_list[0]})
+	team_HA = {team_list[0]:"HOME", team_list[1]:"AWAY"}
 	
 	# Here is for goals in regular time
 	score_list = bs_obj.findAll('div', {'class':'fi-mh__scorer__event'})
@@ -46,7 +48,7 @@ def get_event_list(match_url):
 			og = False
 		if not player_name[0] == '@':
 			player_num = tmi[player_name][0]
-			goaler_team_id = tid[tmi[player_name][1]]
+			goaler_team_id = team_HA[tmi[player_name][1]]
 			# ind = (player_num, team_id)
 			minute = int(time[0:time.find("'")])
 
@@ -64,7 +66,7 @@ def get_event_list(match_url):
 			full_time = str(start_time + datetime.timedelta(minutes = int(time)) - datetime.timedelta(hours = jet_lag))
 			# goal_ind += 1
 			if og:
-				goal_belong = tid[teams[tmi[player_name][1]]]
+				goal_belong = team_HA[teams[tmi[player_name][1]]]
 
 			else:
 				goal_belong = goaler_team_id
@@ -90,16 +92,29 @@ def get_event_list(match_url):
 		print(team_1_res)
 		for i in range(team_0_res):
 			
-			inf = [full_time,match_id,tid[team_list[0]],-1,False,tid[team_list[0]]]
+			inf = [full_time,match_id,team_HA[team_list[0]],-1,False,team_HA[team_list[0]]]
 			goal_list.append(inf)
 		for i in range(team_1_res):
-			inf = [full_time,match_id,tid[team_list[1]],-1,False,tid[team_list[1]]]
+			inf = [full_time,match_id,team_HA[team_list[1]],-1,False,team_HA[team_list[1]]]
 			goal_list.append(inf)
 
 
 	# Process display and overall count processing
 	print(goal_list)
+
+	j = json.dumps(goal_list)
+
+	file_name = 'events/' + str(match_id) + '.json'
+	with open(file_name, 'w') as fh:
+		fh.write(j);
+
+
+
+
 	match_id += 1
+
+
+
 	return goal_list
 
 def get_match_list():
@@ -134,7 +149,7 @@ if __name__ == '__main__':
 	
 
 	jso = json.dumps(data)
-	with open("event.json",'w') as f:
+	with open("events.json",'w') as f:
 		f.write(jso)
 
 	print("ok")
