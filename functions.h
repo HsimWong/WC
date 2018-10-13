@@ -16,26 +16,31 @@ time_t str2time(string s){
     return mktime(&tm);
 }
 
+
+
 vector<vector<string>> readFile(string file){
-	ifstream handler(file);
-	string str;
-	vector<vector<string>> vec;
-	while(getline(handler, str)){
-		if(str.size() > 10){
-			string temp = str.substr(2,str.size() - 3);
-			int pos = 0;
-			vector<string> row;
-			do{
-				int ind = temp.find(",", pos);
-				if(ind >= 0 && ind < temp.size()){
-					row.push_back(temp.substr(pos, ind - pos));
-				}
-			}
-			vec.push_back(row);
-		}
-	}
-	handler.close();
-	return vec;
+    ifstream handler(file);
+    string str;
+    vector<vector<string>> vec;
+    while(getline(handler, str)){
+        if(str.size() > 10){
+            string temp = str.substr(2,str.size() - 3);
+            int pos = 0;
+            vector<string> row;
+            do{
+                int ind = temp.find(",", pos);
+                if(ind >= 0 && ind < temp.size()){
+                    row.push_back(temp.substr(pos, ind - pos));
+                }
+                else{
+                    break;
+                }
+            }while(true);
+            vec.push_back(row);
+        }
+    }
+    handler.close();
+    return vec;
 }
 
 

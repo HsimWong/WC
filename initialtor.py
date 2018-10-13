@@ -47,7 +47,7 @@ string+='\n};'
 for var in varis:
 	string +=  '\n\n' + var[1] + ' ' + className +'::' + 'get_' +var[0] + '(){\n\treturn this -> ' + var[0] + ';\n}'
 
-filename = className +'.cpp'
+filename = className +'.h'
 f = open(filename,'w')
 f.write(string)
 f.close
