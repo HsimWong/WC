@@ -5,6 +5,7 @@
 #include<ctime>
 #include<fstream>
 #include<vector>
+#include<math.h>
 using namespace std;
 time_t str2time(string s){
     struct tm tm;    
@@ -16,7 +17,42 @@ time_t str2time(string s){
     return mktime(&tm);
 }
 
+long long power(long long root, long long times){
+	long long ago = 1;
+	for(int i = 0; i < times; i++){
+		ago *= root;
+	}
+	return ago;
+}
 
+long long str2int(string s){
+	long long ago = 0;
+	bool ifneg = (s[0] == '-');
+	int i = 0;
+	if(ifneg){
+		i = 1;
+	}
+
+	for(; i < (int)(s.size()); i++){
+		if(s[i] <= '9' && s[i] >='0'){
+			cout << s[i] << '\t';
+			cout << (int)s[i] << '\t';
+			// Result is inaccurate when digit number is greater than 4
+			// ago += ((int)s[i] - 48) * ((double)pow(10.0, s.size() - (double)i - 1.0));
+			ago += ((int)s[i] - 48) * (power(10,(int)(s.size() - i - 1)));
+			cout << ago << endl;
+		}
+		else{
+			cerr << "the string input is not an integer" << endl;
+			cerr << "Error occurrd at the " << i << "th digit of"<< s << endl;
+			break; 
+		}
+	}
+	if(ifneg){
+		ago = (long long)0 - ago;
+	}
+	return ago;
+}
 
 // vector<vector<string>> readFile(string file){
 //     ifstream handler(file);
