@@ -13,7 +13,6 @@ int main(){
 	string s = "-79812015279";
 	long long a = str2int(s);
 	cout << a;
-	// int a = 1;
-	// cout << a * pow(10,5)<< endl;
-	// cout << a * 10000;
+
+	
 }

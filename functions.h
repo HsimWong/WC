@@ -35,12 +35,12 @@ long long str2int(string s){
 
 	for(; i < (int)(s.size()); i++){
 		if(s[i] <= '9' && s[i] >='0'){
-			cout << s[i] << '\t';
-			cout << (int)s[i] << '\t';
+			// cout << s[i] << '\t';
+			// cout << (int)s[i] << '\t';
 			// Result is inaccurate when digit number is greater than 4
 			// ago += ((int)s[i] - 48) * ((double)pow(10.0, s.size() - (double)i - 1.0));
 			ago += ((int)s[i] - 48) * (power(10,(int)(s.size() - i - 1)));
-			cout << ago << endl;
+			// cout << ago << endl;
 		}
 		else{
 			cerr << "the string input is not an integer" << endl;

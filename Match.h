@@ -30,7 +30,7 @@ private:
 	short match_status = 0;
 	time_t curr_time
 	int num_goal_home;
-	int num_goal_
+	int num_goal_away;
 	// Team * team_win;
 public:
 	Match(int match_id, string curr_time);
@@ -45,7 +45,13 @@ public:
 
 Match::Match(int match_id, string time){
 	this -> match_id = match_id;
+	this -> num_goal_away = 0;
+	this -> num_goal_home = 0;
+
 	this -> curr_time = str2time(time);
+
+
+
 	fetch_balls();
 }
 
@@ -92,6 +98,7 @@ void Match::fetch_balls(){
 			}
 		}
 
+		// 
 		switch(info_ind){
 			case 0:
 				temp_time = temp;
@@ -113,19 +120,20 @@ void Match::fetch_balls(){
 		}
 
 		if((info_ind == 5) && (str2time(temp_time) <= curr_time)){
+
 			if(temp_goal_belong = "HOME"){
 				(this -> num_goal_home)++;
 			}
-			else if(temp_goal_belong = "")
+			else if(temp_goal_belong = "AWAY"){
+				(this -> num_goal_away)++;
+			}
 		}
-
-
-
-
-
-		info_ind = (info_ind + 1)%5
-
+		info_ind = (info_ind + 1)%5;
 	}
+
+
+
+
 
 
 
