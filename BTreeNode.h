@@ -9,12 +9,19 @@ class BTreeNode
 {
 private:
 	T info;
-	Tree 
+	BTreeNode<T> * left;
+	BTreeNode<T> * right;
+
 public:
 	BTreeNode();
 	~BTreeNode();
 	
 };
+
+template <class T>
+BTreeNode<T> :: BTreeNode(T info){
+	this -> info = 
+}
 
 
 #endif

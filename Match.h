@@ -27,7 +27,7 @@ class Match{
 private:
 	int match_id;
 	short match_status = 0;
-	time_t curr_time
+	time_t curr_time;
 	int num_goal_home;
 	int num_goal_away;
 	Goal * goal_home[7];
@@ -49,7 +49,7 @@ Match::Match(int match_id, string time){
 	this -> match_id = match_id;
 	this -> num_goal_away = 0;
 	this -> num_goal_home = 0;
-	int father_id = 0
+	int father_id = 0;
 	this -> curr_time = str2time(time);
 	fetch_balls();
 	this -> father = new Match(father_id, curr_time);
