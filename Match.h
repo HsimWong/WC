@@ -1,6 +1,5 @@
 #ifndef MATCH_H
-#define MATCH_H value
-
+#define MATCH_H 
 
 #include<ctime>
 #include<iostream>
@@ -31,6 +30,9 @@ private:
 	time_t curr_time
 	int num_goal_home;
 	int num_goal_away;
+	Goal * goal_home[7];
+	Goal * goal_away[7];
+	Match * father;
 	// Team * team_win;
 public:
 	Match(int match_id, string curr_time);
@@ -47,12 +49,10 @@ Match::Match(int match_id, string time){
 	this -> match_id = match_id;
 	this -> num_goal_away = 0;
 	this -> num_goal_home = 0;
-
+	int father_id = 0
 	this -> curr_time = str2time(time);
-
-
-
 	fetch_balls();
+	this -> father = new Match(father_id, curr_time);
 }
 
 void Match::fetch_balls(){
@@ -120,15 +120,17 @@ void Match::fetch_balls(){
 		}
 
 		if((info_ind == 5) && (str2time(temp_time) <= curr_time)){
-
+			goal_temp = new Goal(temp_time, temp_match_id, temp_goaler_team, temp_goaler_id, temp_ifOG, temp_goal_belong);
 			if(temp_goal_belong = "HOME"){
+				goal_home[this -> num_goal_home] = goal_temp;
 				(this -> num_goal_home)++;
 			}
 			else if(temp_goal_belong = "AWAY"){
+				goal_away[this -> num_goal_home] = goal_temp;
 				(this -> num_goal_away)++;
 			}
 		}
-		info_ind = (info_ind + 1)%5;
+		info_ind = (info_ind + 1) % 5;
 	}
 
 
