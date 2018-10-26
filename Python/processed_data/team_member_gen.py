@@ -42,6 +42,7 @@ def get_player_dic(url):
 	team_name = team_name[start_ind:end_ind]
 	# print(team_name)
 	# print((num_list))
+	info = {}
 	for i in range(len(person_tab)):
 		
 		if i < 23:
@@ -52,8 +53,8 @@ def get_player_dic(url):
 		begin_ind = span.find('>')
 		end_ind = span.find('</span>')
 		name = span[begin_ind+1:end_ind]
-		info = (num, team_name)
-		ret.update({name:info})
+		info.update({num: name})
+		ret.update({team_name:info})
 	return ret
 
 def team_gen():
@@ -70,7 +71,7 @@ def team_gen():
 
 if __name__ == '__main__':
 	jso = json.dumps(team_gen())
-	with open("team_member_info.json",'w') as f:
+	with open("team_num_play.json",'w') as f:
 		f.write(jso)
 
 	print("ok")
