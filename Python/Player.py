@@ -19,5 +19,12 @@ class Player:
 
 	def get_goal_number(self):
 		return (len(self.goals))
+
+	def __lt__(self, other):
+		return (len(self.goals) < len(other.goals))
+
+	def __le__(self, other):
+		return (len(self.goals) <= len(other.goals))
 		
+
 
