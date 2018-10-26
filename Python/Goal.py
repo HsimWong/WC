@@ -18,6 +18,3 @@ class Goal:
 
 	def get_time(self):
 		return self.time
-
-g = Goal('["2018-06-14 16:26:00", 0, "HOME", 22, false, "HOME"]')
-print(g.get_time())

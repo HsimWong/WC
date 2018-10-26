@@ -9,7 +9,7 @@ class Team:
 	def __init__(self, id_num):
 		self.id_num = id_num
 		self.team_name = id_team[self.id_num]
-		# self.
+		self.
 
 
 if __name__ == '__main__':
