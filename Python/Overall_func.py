@@ -13,6 +13,13 @@ def date_intp(str):
 	return datetime.strptime(str,'%Y-%m-%d %H:%M:%S')
 
 
+def dic_rev(dic):
+	ret = {}
+	for key in dic.keys():
+		ret.update({dic[key]:key})
+	return ret
+
+
 if __name__ == '__main__':
 	# print(time.time())
 	# print(type(datetime.now()))
