@@ -1,6 +1,9 @@
 import json
 import time
 from datetime import *
+
+cur_time = ""
+
 def get_json_dic(directory):
 	return json.loads(open(directory,'r').read())
 
@@ -19,6 +22,13 @@ def dic_rev(dic):
 		ret.update({dic[key]:key})
 	return ret
 
+def get_cur_time():
+	global cur_time
+	return cur_time
+
+def set_cur_time(str):
+	global cur_time
+	cur_time = datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
 
 if __name__ == '__main__':
 	# print(time.time())
