@@ -81,3 +81,4 @@ if __name__ == '__main__':
 	team2 = Team('B2')
 	match = Match(3, None, team2, None, team1)
 	print(match.score_list[1].goal_time)
+	print(match.home)
