@@ -12,6 +12,9 @@ from Goal import *
 from Overall_func import *
 from Match import *
 
+with open('processed_data\\knockout_country_id.json') as f:
+	team_id = json.loads(f.read())
+
 with open('Raw_data\\worldcup.json', 'r') as f:
 	match_exact_info = json.loads(f.read())
 
@@ -40,10 +43,12 @@ class Group:
 		for match_day in match_exact_info['rounds']:
 			for match in match_day['matches']:
 				# print((match))
-				if match['group'][-1] == self.group_name:
-					print(type(match['num']))
-					print(match['team1'])
-					games.append(Match(match['num'] - 1, None, team_dic[match['team1']], None, team_dic[match['team2']]))
+				if match['num'] < 49:
+					if match['group'][-1] == self.group_name:
+						# print(type(match['num']))
+						print(match['team1'], end = '\t')
+						print(match['team2'])
+						games.append(Match(match['num'] - 1, None, team_dic[team_id[match['team1']['name']]], None, team_dic[team_id[match['team2']['name']]]))
 
 if __name__ == '__main__':
 	group = Group('A')
