@@ -27,4 +27,7 @@ class Player:
 		return (len(self.goals) <= len(other.goals))
 		
 
+# a = Player('Russia', "Coach")
+# print(a.name)
+
 

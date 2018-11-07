@@ -13,34 +13,30 @@ with open('processed_data\\knockout_country_id.json') as f:
 
 
 class Team:
+	
 	def __init__(self, id_num):
+		self.goal_win = 0
+		self.goal_lose = 0
 		self.id_num = id_num
 		self.team_name = id_team[self.id_num]
-		self.players_list = get_players()
+		self.players_list = [Player(self.team_name, 'Coach'),]+[Player(self.team_name, i + 1) for i in range(23)]
 		self.credit = 0
-
-	def get_players():
-		ret = []
-		for i in range(24):
-			if i == 0:
-				ret.append(Player(team_name, t_p[self.team_name]['Coach']))
-			else:
-				ret.append(Player(team_name, t_p[self.team_name][str(i)]))
-		return ret
-
-
-
-	def win():
+		
+		
+		
+	def win(self):
+		# self.total_win += 1
 		self.credit += 3
-
-	def peace():
+	def peace(self):
 		self.credit += 1
-
-	def lose():
+	def lose(self):
 		pass
 
-
-
 if __name__ == '__main__':
-	p1 = Player('Portugal', '2')
-	print(p1.name)
+	team_a = Team('A1')
+	print(team_a.id_num)
+	print(team_a.team_name)
+	print(team_a.players_list[3].name)
+	print(team_a.goal_win)
+
+	# print(team_a.players_list[0].name)

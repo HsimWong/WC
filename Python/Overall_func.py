@@ -2,7 +2,7 @@ import json
 import time
 from datetime import *
 
-cur_time = ""
+cur_time = "2018-07-15 16:20:00"
 
 def get_json_dic(directory):
 	return json.loads(open(directory,'r').read())
@@ -24,7 +24,7 @@ def dic_rev(dic):
 
 def get_cur_time():
 	global cur_time
-	return cur_time
+	return date_intp(cur_time)
 
 def set_cur_time(str):
 	global cur_time
@@ -34,4 +34,5 @@ if __name__ == '__main__':
 	# print(time.time())
 	# print(type(datetime.now()))
 	print(type(date_intp('2018-06-14 18:00:00')))
+	
 	

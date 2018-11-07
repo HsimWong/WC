@@ -1,6 +1,9 @@
 # coding:utf-8
 import json
 from Overall_func import *
+import match_time
+from Goal import *
+from Team import *
 
 with open('processed_data\\teams.json') as f:
 	participants = json.loads(f.read())
@@ -8,85 +11,73 @@ with open('processed_data\\teams.json') as f:
 with open('processed_data\\knockout_country_id.json') as f:
 	team_ind = json.loads(f.read())
 
+with open('raw_data\\worldcup.json', 'r') as f:
+	raw_info = json.loads(f.read());
+
+# goalbelong{"AWAY":}
 '''
-63 - 62）/2 + 1 = 
-
-k = 63 - m
-p = 63 - n
-m = n * 2 - 1
-
-64 - home = (64 - p) * 2
-64 - away = (64 - p) * 2 - 1
 
 home = 64 - 2 * 64 + 2 * id = 2 * id - 64
-away = 
-
-
-1
-	3
-		5
-			9
-			10
-		6
-			11
-			12
-	4
-		7
-			13
-			14
-		8
-			15
-			16
-
-2
-	3
-	4
+away = 64 - （64 -p) * 2 + 1= 2 * id - 63
 
 '''
-
+'''
+Definition of the node of binary tree
+'''
 class Match:
-	def __init__(self, id_num):
+	'''
+	Team which participates in this game is logically realized in the module of Playoff.py
+	home_team and away_team are objects of Team
+	'''
+
+
+	def __init__(self, id_num, home_match, home_team, away_match, away_team):
+	
 		self.id = id_num
-		self.home_team = None
-		self.away_team = None
-		self.home_son = None
-		self.away_son = None
+		self.home_match = home_match
+		self.home_team = home_team
+		self.away_match = away_match
+		self.away_team = away_team
+		self.home_goal_num = 0
+		self.away_goal_num = 0
+		# status rep
+		self.status = (get_cur_time() > match_time.times[id_num]);
+		self.raw_score_list = json.loads(open('processed_data\\events\\' + str(self.id) + '.json', 'r').read())
+		self.score_list = []
 		self.winner = None
-		self.loser = None
-		get_teams()
 
-	def if_group():
-		return (self.id < 48)
-
-
-	def get_teams:
-		if if_group():
-			self.home_team = Team(team_ind[participants[self.id][0]])
-			self.away_team = Team(team_ind[participants[self.id][1]])
-			return True
-		elif self.id == 63:
-			pass
-		elif self.id == 62:
-			pass
-		elif self.id >= 56:
-			pass
+		for score in self.raw_score_list:
+			if date_intp(score[0]) <= get_cur_time():
+				temp = Goal(score)
+				self.score_list.append(temp)
+				if temp.goal_belong == "HOME":
+					self.home_goal_num += 1
+					self.home_team.goal_win += 1
+					self.away_team.goal_lose += 1
+					if (not temp.ifOG) & (temp.goaler_id >= 0):
+						self.home_team.players_list[temp.goaler_id].goal_in(temp)
+				else:
+					self.away_goal_num += 1
+					self.away_team.goal_win += 1
+					self.away_team.goal_lose += 1					
+					if not temp.ifOG:
+						self.away_team.players_list[temp.goaler_id].goal_in(temp)
+		if self.home_goal_num > self.away_goal_num:
+			self.winner = home_team
+			self.winner.win()
+			self.away_team.lose()
+		elif self.home_goal_num < self.away_goal_num:
+			self.winner = away_team
+			self.winner.win()
+			self.home_team.lose()
 		else:
-			pass
+			self.winner = None
+			self.home_team.peace()
+			self.away_team.peace()
 
 
-
-
-
-
-# class Match_group:
-# 	def __init__(self, id):
-# 		self.group = 
-# 		self.match_id = id
-# 		self.event_list = []
-# 		self.
-# 	def get_teams
-
-
-# class Match_knock:
-# 	def __init__(self, id):
-# 		self.aim_match
+if __name__ == '__main__':
+	team1 = Team('A3')
+	team2 = Team('B2')
+	match = Match(3, None, team2, None, team1)
+	print(match.score_list[1].goal_time)
