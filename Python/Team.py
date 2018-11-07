@@ -1,3 +1,4 @@
+# coding = 'utf-8'
 # Team Module
 import json
 from Overall_func import *
@@ -22,7 +23,16 @@ class Team:
 		self.players_list = [Player(self.team_name, 'Coach'),]+[Player(self.team_name, i + 1) for i in range(23)]
 		self.credit = 0
 		
-		
+	def __lt__(self, other):
+		return self.credit < other.credit
+
+	def __eq__(self, other):
+		return self.credit == other.credit
+
+	def __le__(self, other):
+		return self.credit <= other.credit
+	# def __gt__(self, other):
+	# 	return self.credit > other.credit
 		
 	def win(self):
 		# self.total_win += 1
@@ -32,11 +42,20 @@ class Team:
 	def lose(self):
 		pass
 
+
+
 if __name__ == '__main__':
 	team_a = Team('A1')
+	team_b = Team("B1")
+	team_c = Team('C1')
+	team_a.win()
 	print(team_a.id_num)
 	print(team_a.team_name)
 	print(team_a.players_list[3].name)
 	print(team_a.goal_win)
+	print(team_a.credit)
+	print(team_a < team_b)
+	print(team_c <= team_b)
+	# print()
 
 	# print(team_a.players_list[0].name)

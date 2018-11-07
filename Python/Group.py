@@ -18,6 +18,7 @@ with open('processed_data\\knockout_country_id.json') as f:
 with open('Raw_data\\worldcup.json', 'r') as f:
 	match_exact_info = json.loads(f.read())
 
+team_id.update({"Iran": "B2", "South Korea": "F2"})
 
 
 print(len(match_exact_info))
@@ -32,8 +33,9 @@ class Group:
 		self.team_2 = Team(self.group_name + str(2))
 		self.team_3 = Team(self.group_name + str(3))
 
-		team_dic = {}
+		# team_dic = {}
 		# Procedure of games
+		team_list = [self.team_0, self.team_1, self.team_2, self.team_3]
 		team_dic = {self.group_name + str(0):self.team_0, 
 				self.group_name + str(1):self.team_1, 
 				self.group_name + str(2):self.team_2, 
@@ -46,13 +48,16 @@ class Group:
 				if match['num'] < 49:
 					if match['group'][-1] == self.group_name:
 						# print(type(match['num']))
-						print(match['team1'], end = '\t')
-						print(match['team2'])
+						# print(match['team1'], end = '\t')
+						# print(match['team2'])
 						games.append(Match(match['num'] - 1, None, team_dic[team_id[match['team1']['name']]], None, team_dic[team_id[match['team2']['name']]]))
 
+ 
+		# print(games[0].home_team.team_name)
 if __name__ == '__main__':
-	group = Group('A')
-
+	# groupa = Group('A')
+	groupb = Group('B')
+	groupc = Group('F')
 		
 
 

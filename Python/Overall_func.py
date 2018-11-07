@@ -1,6 +1,7 @@
 import json
 import time
 from datetime import *
+import math
 
 cur_time = "2018-07-15 16:20:00"
 
@@ -26,6 +27,39 @@ def get_cur_time():
 	global cur_time
 	return date_intp(cur_time)
 
+
+# rec_arr is the record array
+# left is the left opeation index
+# while right is the right operation index
+def quick_sort(rec_arr, left, right):
+	if(right <= left):
+		return
+	pivot = math.floor((left + right) / 2)
+	rec_arr[pivot], rec_arr[right] = rec_arr[right], rec_arr[pivot]
+	pivot = Partition(rec_arr, left, right)
+	quick_sort(rec_arr, left, pivot - 1)
+	quick_sort(rec_arr, pivot + 1, right)
+
+def Partition(rec_arr, left, right):
+	l = left
+	r = right
+	temp_rec = rec_arr[r]
+	while l < r:
+		while (rec_arr[l] <= temp_rec) and (r > l):
+			l += 1
+		if l < r:
+			rec_arr[r] = rec_arr[l]
+			r -= 1
+		while (rec_arr[r] >= temp_rec) and (r > l):
+			r -= 1
+		if l < r:
+			rec_arr[l] = rec_arr[r]
+			l += 1
+	rec_arr[l] = temp_rec
+	return l
+
+
+
 def set_cur_time(str):
 	global cur_time
 	cur_time = datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
@@ -33,6 +67,7 @@ def set_cur_time(str):
 if __name__ == '__main__':
 	# print(time.time())
 	# print(type(datetime.now()))
-	print(type(date_intp('2018-06-14 18:00:00')))
-	
-	
+	a = [1,3,231,123,15,65]
+	print(a)
+	quick_sort(a, 0, len(a) - 1)
+	print(a)
