@@ -36,6 +36,7 @@ class Team:
 		
 	def win(self):
 		# self.total_win += 1
+		# if get_cur_time() <= 
 		self.credit += 3
 	def peace(self):
 		self.credit += 1

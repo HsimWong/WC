@@ -47,19 +47,24 @@ class Match:
 		self.winner = None
 
 		for score in self.raw_score_list:
-			if date_intp(score[0]) <= get_cur_time():
+
+			if (date_intp(score[0])) < get_cur_time():
+				# print((date_intp(score[0])))
+				# print(get_cur_time())
 				temp = Goal(score)
 				self.score_list.append(temp)
 				if temp.goal_belong == "HOME":
 					self.home_goal_num += 1
-					self.home_team.goal_win += 1
-					self.away_team.goal_lose += 1
+					if self.id < 48:
+						self.home_team.goal_win += 1
+						self.away_team.goal_lose += 1
 					if (not temp.ifOG) & (temp.goaler_id >= 0):
 						self.home_team.players_list[temp.goaler_id].goal_in(temp)
 				else:
 					self.away_goal_num += 1
-					self.away_team.goal_win += 1
-					self.away_team.goal_lose += 1					
+					if self.id < 48:	
+						self.away_team.goal_win += 1
+						self.away_team.goal_lose += 1					
 					if not temp.ifOG:
 						self.away_team.players_list[temp.goaler_id].goal_in(temp)
 		if self.home_goal_num > self.away_goal_num:
@@ -77,8 +82,14 @@ class Match:
 
 
 if __name__ == '__main__':
-	team1 = Team('A3')
-	team2 = Team('B2')
-	match = Match(3, None, team2, None, team1)
-	print(match.score_list[1].goal_time)
-	print(match.home)
+	pass
+	# team1 = Team('A3')
+	# team2 = Team('B2')
+	# match = Match(3, None, team2, None, team1)
+	# goal_t = (match.score_list[0].goal_time)
+	# print(match.score_list)
+	# cur_t = get_cur_time()
+	# print(goal_t)
+	# print(cur_t)
+	# print(date_intp(goal_t) > cur_t)
+	# print(match.home)

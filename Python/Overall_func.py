@@ -3,7 +3,7 @@ import time
 from datetime import *
 import math
 
-cur_time = "2018-07-15 16:20:00"
+cur_time = "2018-06-15 19:40:00"
 
 def get_json_dic(directory):
 	return json.loads(open(directory,'r').read())
@@ -31,6 +31,9 @@ def get_cur_time():
 # rec_arr is the record array
 # left is the left opeation index
 # while right is the right operation index
+def qs(rec_arr):
+	quick_sort(rec_arr, 0, len(rec_arr) - 1)
+
 def quick_sort(rec_arr, left, right):
 	if(right <= left):
 		return
@@ -69,5 +72,5 @@ if __name__ == '__main__':
 	# print(type(datetime.now()))
 	a = [1,3,231,123,15,65]
 	print(a)
-	quick_sort(a, 0, len(a) - 1)
+	qs(a)
 	print(a)
