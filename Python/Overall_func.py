@@ -3,8 +3,8 @@ import time
 from datetime import *
 import math
 
-cur_time = "2018-06-15 19:40:00"
-
+cur_time = "2018-07-19 19:40:00"
+# cur_time = 
 def get_json_dic(directory):
 	return json.loads(open(directory,'r').read())
 

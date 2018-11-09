@@ -16,10 +16,8 @@ with open('raw_data\\worldcup.json', 'r') as f:
 
 # goalbelong{"AWAY":}
 '''
-
 home = 64 - 2 * 64 + 2 * id = 2 * id - 64
 away = 64 - （64 -p) * 2 + 1= 2 * id - 63
-
 '''
 '''
 Definition of the node of binary tree
@@ -45,6 +43,7 @@ class Match:
 		self.raw_score_list = json.loads(open('processed_data\\events\\' + str(self.id) + '.json', 'r').read())
 		self.score_list = []
 		self.winner = None
+		self.loser = None
 
 		for score in self.raw_score_list:
 
@@ -69,18 +68,21 @@ class Match:
 						self.away_team.players_list[temp.goaler_id].goal_in(temp)
 		if self.home_goal_num > self.away_goal_num:
 			self.winner = home_team
+			self.loser = away_team
 			self.winner.win()
 			self.away_team.lose()
 		elif self.home_goal_num < self.away_goal_num:
 			self.winner = away_team
+			self.loser = home_team
 			self.winner.win()
 			self.home_team.lose()
 		else:
 			self.winner = None
+			self.loser = None
 			self.home_team.peace()
 			self.away_team.peace()
 
 
 if __name__ == '__main__':
-	pass
-	
+	# pass
+	Match(1, None, None, None, None)
