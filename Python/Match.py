@@ -83,13 +83,4 @@ class Match:
 
 if __name__ == '__main__':
 	pass
-	# team1 = Team('A3')
-	# team2 = Team('B2')
-	# match = Match(3, None, team2, None, team1)
-	# goal_t = (match.score_list[0].goal_time)
-	# print(match.score_list)
-	# cur_t = get_cur_time()
-	# print(goal_t)
-	# print(cur_t)
-	# print(date_intp(goal_t) > cur_t)
-	# print(match.home)
+	

@@ -50,19 +50,12 @@ class Group:
 					if match['group'][-1] == self.group_name:
 						
 						self.games.append(Match(match['num'] - 1, None, team_dic[team_id[match['team1']['name']]], None, team_dic[team_id[match['team2']['name']]]))
-		# print(self.games[0].away_goal_num)
-		# print(self.games[0].home_goal_num)
-		# print(self.games[0].id)
-		# print(self.games[0].home_team.credit)
-		# print(self.games[0].away_team.team_name)
-		# print(self.games[0].score_list[0].goal_time)
-		# print(self.games[1].id)
+		
 		qs(self.team_list)
-		# print(team_list[0])
-		# print(self.games[0].home_team.team_name)
+
 if __name__ == '__main__':
 	# groupa = Group('A')
-	groupb = Group('B')
+	groupb = Group('H')
 	print(groupb.games[0].id)
 	print(groupb.games[0].away_goal_num)
 	# print()

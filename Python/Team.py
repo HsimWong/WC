@@ -31,8 +31,8 @@ class Team:
 
 	def __le__(self, other):
 		return self.credit <= other.credit
-	# def __gt__(self, other):
-	# 	return self.credit > other.credit
+	def __gt__(self, other):
+		return self.credit > other.credit
 		
 	def win(self):
 		# self.total_win += 1
