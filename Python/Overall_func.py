@@ -2,8 +2,10 @@ import json
 import time
 from datetime import *
 import math
+import eel
 
-cur_time = "2018-07-19 19:40:00"
+
+cur_time = ""
 # cur_time = 
 def get_json_dic(directory):
 	return json.loads(open(directory,'r').read())
@@ -27,7 +29,10 @@ def get_cur_time():
 	global cur_time
 	return date_intp(cur_time)
 
-
+@eel.expose
+def get_time_str():
+	global cur_time
+	return cur_time
 # rec_arr is the record array
 # left is the left opeation index
 # while right is the right operation index
@@ -61,16 +66,15 @@ def Partition(rec_arr, left, right):
 	rec_arr[l] = temp_rec
 	return l
 
-
-
+# "2018-07-29 19:40:00"
+@eel.expose
 def set_cur_time(str):
 	global cur_time
+
 	cur_time = datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
 
+eel.init('..\\..\\WC')
+eel.start('index.html')
+
 if __name__ == '__main__':
-	# print(time.time())
-	# print(type(datetime.now()))
-	a = [1,3,231,123,15,65]
-	print(a)
-	qs(a)
-	print(a)
+	

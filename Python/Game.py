@@ -15,5 +15,5 @@ for game in p.games:
 		print(goal_dic[goal.goal_belong], end = ':')
 		print(goal.goal_time, end = '\t')
 		
-	print('', end = '\n')
+	print('', end = '\n\n')
 	

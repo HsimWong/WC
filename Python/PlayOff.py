@@ -65,11 +65,20 @@ class PlayOff():
 				count += 1
 
 		if get_cur_time() >= date_intp("2018-07-11 18:05:00"):
-			self.game_bronze = Match(count, self.game_2[0], self.game_2[0].loser, self.game_2[1], self.game_2[1].loser)
+			self.game_bronze = Match(62, self.game_2[0], self.game_2[0].winner, self.game_2[1], self.game_2[1].winner)
 			self.games.append(self.game_bronze)
-
+			count +=1
 
 		if get_cur_time() >= date_intp("2018-07-14 16:14:00"):
-			self.final = Match(count, self.game_2[0], self.game_2[0].winner, self.game_2[1], self.game_2[1].winner)
+			# print(count)
+			self.final = Match(63, self.game_2[0], self.game_2[0].loser, self.game_2[1], self.game_2[1].loser)
 			self.games.append(self.final)
 # f = PlayOff()
+
+if __name__ == '__main__':
+	p = PlayOff()
+	for group in p.groups:
+		print(group.group_name)
+		for team in group.team_list:
+			print(team.team_name, end = '\t')
+			print(team.credit)
