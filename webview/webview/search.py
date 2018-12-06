@@ -10,18 +10,15 @@ def search_form(request):
 # 接收请求数据
 def search(request):  
 	request.encoding='utf-8'
-	time = request.GET['date'] + ' ' 
-	if request.GET['time'] == '':
-		time += "00:00"
+	if 'date' in request.GET:
+		time = request.GET['date'] + ' ' 
+		if request.GET['time'] == '':
+			time += "00:00"
+		else:
+			time += request.GET['time']
+		time += ':00'
+		Overall_func.set_cur_time(str(time))
+		return HttpResponse("Current time: " + str(Overall_func.cur_time))
 	else:
-		time += request.GET['time']
-	time += ':00'
-	Overall_func.set_cur_time(str(time))
-	return HttpResponse("Current time: " + str(Overall_func.cur_time))
+		return HttpResponse("Current time not set")
 
-
-
-def m():
-	string = "2018-06-15 08:08:00"
-	Overall_func.set_cur_time(string)
-	print(str(Overall_func.cur_time))

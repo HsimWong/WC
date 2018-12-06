@@ -77,6 +77,18 @@
 		<a href="venues.html" id="tabs">Venues</a>
 	</div>
 
+	<h2>Which game do you want to query?</h2>
+
+	<form action="/search_match" method="get">
+		Match id<input id="query" type="number" name="match_id"><br>
+		
+		<input type="submit" name="submmit" value="query">
+	</form>
+
+
+
+
+
 	<div id="group_phase">
 		<table border="0">
 		{% for match in matches %}

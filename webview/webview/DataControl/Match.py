@@ -41,13 +41,8 @@ class Match:
 			ret += '\tPenalty'
 		return ret
 	
-
-
 	def __init__(self, id_num, home_match, home_team, away_match, away_team):
-		
-		
-
-
+		self.start_time = match_time.times[id_num]
 		self.id = id_num
 		self.home_match = home_match
 		self.home_team = home_team
@@ -63,9 +58,6 @@ class Match:
 		self.loser = None
 
 		for score in self.raw_score_list:
-			
-
-
 			if (date_intp(score[0])) < get_cur_time():
 				# print((date_intp(score[0])))
 				# print(get_cur_time())
@@ -76,14 +68,14 @@ class Match:
 					self.home_goal_num += 1
 					if self.id < 48:
 						self.home_team.goal_win += 1
-						self.away_team.goal_lose += 1
+						self.away_team.goal_lose -= 1
 					if (not temp.ifOG) & (temp.goaler_id >= 0):
 						self.home_team.players_list[temp.goaler_id].goal_in(temp)
 				else:
 					self.away_goal_num += 1
 					if self.id < 48:	
 						self.away_team.goal_win += 1
-						self.away_team.goal_lose += 1					
+						self.away_team.goal_lose -= 1					
 					if not temp.ifOG:
 						self.away_team.players_list[temp.goaler_id].goal_in(temp)
 		if self.home_goal_num > self.away_goal_num:
@@ -107,7 +99,8 @@ class Match:
 				self.away_team.credit += 1
 
 	
-	
+	def get_start(self):
+		return self.start_time
 
 	def __lt__(self, other):
 		return (self.id < other.id)

@@ -18,29 +18,21 @@ class Team:
 	def __init__(self, id_num):
 		self.goal_win = 0
 		self.goal_lose = 0
+
 		self.id_num = id_num
 		self.team_name = id_team[self.id_num]
 		self.players_list = [Player(self.team_name, 'Coach'),]+[Player(self.team_name, i + 1) for i in range(23)]
 		self.credit = 0
-		
-	def __lt__(self, other):
-		if self.team_name == "Japan" and other.team_name == "Senegal":
-			return False
-		return self.credit < other.credit
 
-	def __eq__(self, other):
-		if self.team_name == "Japan" and other.team_name == "Senegal":
-			return False
-		return self.credit == other.credit
 
 	def __le__(self, other):
-		if self.team_name == "Japan" and other.team_name == "Senegal":
+		if self.team_name == "Japan" and other.team_name == "Senegal" and self.credit == other.credit:
 			return False
-		return self.credit <= other.credit
-	def __gt__(self, other):
-		if self.team_name == "Japan" and other.team_name == "Senegal":
-			return True
-		return self.credit > other.credit
+		if self.credit == other.credit:
+			return (self.goal_win + self.goal_lose) < (other.goal_win + other.goal_lose)
+		else:
+			return self.credit < other.credit
+	
 		
 	def win(self):
 		# self.total_win += 1

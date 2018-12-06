@@ -13,9 +13,11 @@ class Player:
 		self.number = number
 		self.name = player_info[team][str(number)]
 		self.goals = []
+		self.goal_num = 0
 
 	def goal_in(self, goal):
 		self.goals.append(goal)
+		self.goal_num += 1
 
 	def get_goal_number(self):
 		return (len(self.goals))
