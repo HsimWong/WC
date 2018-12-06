@@ -1,8 +1,8 @@
 # coding: 'utf-8'
 import json
-from Overall_func import *
-# from Team
-from Group import *
+from webview.DataControl.Overall_func import *
+from webview.DataControl import match_time
+from webview.DataControl.Group import *
 import math
 
 
@@ -73,6 +73,10 @@ class PlayOff():
 			# print(count)
 			self.final = Match(63, self.game_2[0], self.game_2[0].loser, self.game_2[1], self.game_2[1].loser)
 			self.games.append(self.final)
+
+		qs(self.games)
+
+
 # f = PlayOff()
 
 if __name__ == '__main__':

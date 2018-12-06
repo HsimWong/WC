@@ -22,8 +22,17 @@ Including another URLconf
 
 from django.conf.urls import url
  
-from . import view
+from . import view 
+from . import search
  
 urlpatterns = [
+	url(r'^$', view.first),
     url(r'hello', view.hello),
+    url(r'^search-form$', search.search_form),
+    url(r'^search$', search.search),
+    url(r'^matches', view.matches),
+    url(r'^teams', view.teams),
+    url(r'^groups', view.groups),
+    url(r'^score_rank', view.score_rank),
+    url(r'^players',view.players)
 ]

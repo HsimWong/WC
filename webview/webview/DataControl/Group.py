@@ -5,18 +5,18 @@ This module is designed for managing matches
 	the group manager runs self.games in this phase,
 	and then push up teams that are qualified to the PlayOff
 '''
-from Team import *
+from webview.DataControl.Team import *
 import json
-import match_time
-from Goal import *
-from Overall_func import *
-from Match import *
+from webview.DataControl import match_time
+from webview.DataControl.Goal import *
+from webview.DataControl.Overall_func import *
+from webview.DataControl.Match import *
 
 
-with open('processed_data\\knockout_country_id.json') as f:
+with open('webview/DataControl/processed_data/knockout_country_id.json') as f:
 	team_id = json.loads(f.read())
 
-with open('Raw_data\\worldcup.json', 'r') as f:
+with open('webview/DataControl/Raw_data/worldcup.json', 'r') as f:
 	match_exact_info = json.loads(f.read())
 
 team_id.update({"Iran": "B2", "South Korea": "F2"})
@@ -48,10 +48,10 @@ class Group:
 				# print((match))
 				if match['num'] < 49:
 					if match['group'][-1] == self.group_name:
-						
 						self.games.append(Match(match['num'] - 1, None, team_dic[team_id[match['team1']['name']]], None, team_dic[team_id[match['team2']['name']]]))
 		
 		qs(self.team_list)
+
 
 if __name__ == '__main__':
 	# groupa = Group('A')

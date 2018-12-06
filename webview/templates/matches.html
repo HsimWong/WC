@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+ 	<style type="text/css">
+ 		#head_banner{
+ 			background-color: #164c8a;
+ 			border-bottom: none;
+ 			border-bottom-width: initial;
+ 			border-bottom-style: none;
+ 			border-bottom-color: initial;
+ 			height: auto;
+ 		}
+ 		.head_logo_pic{
+ 			height: 126px;
+ 			float: left;
+ 		}
+
+ 		.system_info{
+ 			/*font-family: "dusha_plusregular";*/
+ 			border-top-width: 0px;
+ 			color: #fff;
+ 			margin: 20px;
+
+ 			line-height: .8;
+ 			/*font-size: 32px;*/
+ 			float: center;
+ 			font-size: 2.15vw;
+ 		}
+
+ 		#tabs{
+ 			border-left-color: #fff;
+ 			width: 10px;
+ 			color: #fff;
+ 			margin: 10px;
+ 			font-size: 2vw;
+ 			/*float: left;*/
+ 		}
+ 		#title{
+ 			margin-top: 10px;
+ 		}
+
+		table
+		{
+		    border-collapse:collapse;
+		}
+ 		table, th, td{
+		    border: 1px solid black;
+		}
+
+		#score{
+			width: 50px
+		}
+ 	</style>
+
+ 	<script type="text/javascript">
+ 		
+ 	</script>
+</head>
+<body>
+	<div id="head_banner">
+		<a href="^$" class="head_logo" title="2018 FIFA World Cup Query Simulator">
+			<img src="https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w" class="head_logo_pic">
+		</a>
+		<div class="system_info">
+			<h1 id="title">FIFA 2018 World Cup Query Simulator</h1>
+			<p id="notation">Check game information with any input time, as if you ARE AT that time!</p>
+		</div>
+
+		<a href="matches" id="tabs">Matches</a>	
+		<a href="teams" id="tabs">Teams</a>	
+		<a href="groups.html" id="tabs">Groups</a>
+		<a href="score_rank.html" id="tabs">Score Rank</a>	
+		<a href="players.html" id="tabs">Players</a>
+		<a href="venues.html" id="tabs">Venues</a>
+	</div>
+
+	<div id="group_phase">
+		<table border="0">
+		{% for match in matches %}
+		{% if match.id < 48 %}
+			<tr>
+				{% if match.id == 0 %}
+					<h1>Group Phase Matches</h1>
+				{% endif %}
+				<td>{{ match.id }}</td>
+				<td>
+					
+					{% for goal in match.score_list %}
+						
+						{% if goal.goal_belong == "HOME" %}
+							<p>{{ goal.str_info }}</p>
+						{% endif %}
+
+					{% endfor %}
+				</td>
+				<td>
+					<p>{{ match.home_team.team_name }}</p>
+				</td>
+				<td id="score">
+					{% if match.status == True %}
+						{{ match.home_goal_num }}
+					{% else %}
+						--
+					{% endif %}
+					:
+				
+					{% if match.status == True %}
+						{{ match.away_goal_num }}
+					{% else %}
+						--
+					{% endif %}
+				</td>
+				<td>{{ match.away_team.team_name }}</td>
+				<td>
+					
+					{% for goal in match.score_list %}
+						{% if goal.goal_belong == "AWAY" %}
+							<p>{{ goal.str_info }}</p>
+						{% endif %}
+
+					{% endfor %}
+				</td>
+			</tr>
+		{% endif %}
+		{% endfor %}
+		</table>
+	</div>
+	<div id="knock_out_phase">
+		<table border="0">
+		{% for match in matches %}
+		{% if match.id >= 48 %}
+			<tr>
+				{% if match.id == 48 %}
+					<h1>Knockout Phase Matches</h1>
+				{% endif %}
+				<td>{{ match.id }}</td>
+				<td>
+					
+					{% for goal in match.score_list %}
+						
+						{% if goal.goal_belong == "HOME" %}
+							<p>{{ goal.str_info }}</p>
+						{% endif %}
+
+					{% endfor %}
+				</td>
+				<td>
+					<p>{{ match.home_team.team_name }}</p>
+				</td>
+				<td id="score">
+					{% if match.status == True %}
+						{{ match.home_goal_num }}
+					{% else %}
+						--
+					{% endif %}
+					:
+				
+					{% if match.status == True %}
+						{{ match.away_goal_num }}
+					{% else %}
+						--
+					{% endif %}
+				</td>
+				<td>{{ match.away_team.team_name }}</td>
+				<td>
+					
+					{% for goal in match.score_list %}
+						{% if goal.goal_belong == "AWAY" %}
+							<p>{{ goal.str_info }}</p>
+						{% endif %}
+
+					{% endfor %}
+				</td>
+			</tr>
+		{% endif %}
+		{% endfor %}
+		</table>
+	</div>
+	Query time: {{ time }} (GMT)
+	<p></p>
+	{{ playoff }}
+
+
+
+
+</body>
+</html>

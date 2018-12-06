@@ -1,8 +1,8 @@
 import json
 from datetime import *
-from Overall_func import *
+from webview.DataControl.Overall_func import *
 
-with open('Raw_data\\worldcup.json', 'r') as f:
+with open('./webview/DataControl/Raw_data/worldcup.json', 'r') as f:
 	dic = json.loads(f.read())
 
 

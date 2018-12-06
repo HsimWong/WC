@@ -1,9 +1,9 @@
 # coding = 'utf-8'
 import json
-from Overall_func import *
+from webview.DataControl.Overall_func import *
 
 
-with open('processed_data\\team_num_play.json') as f:
+with open('webview/DataControl/processed_data/team_num_play.json') as f:
 	player_info = json.loads(f.read())
 
 class Player:

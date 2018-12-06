@@ -2,7 +2,7 @@ import json
 import time
 from datetime import *
 import math
-import eel
+from webview.DataControl import match_time
 
 
 cur_time = ""
@@ -29,7 +29,6 @@ def get_cur_time():
 	global cur_time
 	return date_intp(cur_time)
 
-@eel.expose
 def get_time_str():
 	global cur_time
 	return cur_time
@@ -67,14 +66,11 @@ def Partition(rec_arr, left, right):
 	return l
 
 # "2018-07-29 19:40:00"
-@eel.expose
+
 def set_cur_time(str):
 	global cur_time
+	# cur_time = datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
+	cur_time = str
 
-	cur_time = datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
 
-eel.init('..\\..\\WC')
-eel.start('index.html')
 
-if __name__ == '__main__':
-	

@@ -16,4 +16,11 @@ class Goal(object):
 		self.goaler_id = goal_obj[3]
 		self.ifOG = goal_obj[4]
 		self.goal_belong = goal_obj[5]
+		self.str_info = ""
+
+	def set_info(self, string):
+		self.str_info = string
+
 		
+
+	

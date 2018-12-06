@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+ 	<style type="text/css">
+ 		#head_banner{
+ 			background-color: #164c8a;
+ 			border-bottom: none;
+ 			border-bottom-width: initial;
+ 			border-bottom-style: none;
+ 			border-bottom-color: initial;
+ 			height: auto;
+ 		}
+ 		.head_logo_pic{
+ 			height: 126px;
+ 			float: left;
+ 		}
+
+ 		.system_info{
+ 			/*font-family: "dusha_plusregular";*/
+ 			border-top-width: 0px;
+ 			color: #fff;
+ 			margin: 20px;
+
+ 			line-height: .8;
+ 			/*font-size: 32px;*/
+ 			float: center;
+ 			font-size: 2.15vw;
+ 		}
+
+ 		#tabs{
+ 			border-left-color: #fff;
+ 			width: 10px;
+ 			color: #fff;
+ 			margin: 10px;
+ 			font-size: 2vw;
+ 			/*float: left;*/
+ 		}
+ 		#title{
+ 			margin-top: 10px;
+ 		}
+ 	</style>
+
+ 	<script type="text/javascript">
+ 		
+ 	</script>
+</head>
+<body>
+	<div id="head_banner">
+		<a href="^$" class="head_logo" title="2018 FIFA World Cup Query Simulator">
+			<img src="https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w" class="head_logo_pic">
+		</a>
+		<div class="system_info">
+			<h1 id="title">FIFA 2018 World Cup Query Simulator</h1>
+			<p id="notation">Check game information with any input time, as if you ARE AT that time!</p>
+		</div>
+
+		<a href="matches.html" id="tabs">Matches</a>	
+		<a href="teams.html" id="tabs">Teams</a>	
+		<a href="groups.html" id="tabs">Groups</a>
+		<a href="score_rank.html" id="tabs">Score Rank</a>	
+		<a href="players.html" id="tabs">Players</a>
+		<a href="venues.html" id="tabs">Venues</a>
+	</div>
+
+	<h1>Before query...</h1>
+		<label for="query">Please set the time of your query</label>
+
+
+
+
+	<form action="/search" method="get">
+		Query date<input id="query" type="date" value="2018-06-15"><br>
+		Query time<input id="query" type="time">
+		<input type="submit" name="submmit" value="Query">
+	</form>
+</body>
+</html>

@@ -1,14 +1,14 @@
 # coding = 'utf-8'
 # Team Module
 import json
-from Overall_func import *
-from Player import *
+from webview.DataControl.Overall_func import *
+from webview.DataControl.Player import *
 
 # Global variables
-with open('processed_data\\team_num_play.json') as f:
+with open('webview/DataControl/processed_data/team_num_play.json') as f:
 	t_p = json.loads(f.read())
 
-with open('processed_data\\knockout_country_id.json') as f:
+with open('webview/DataControl/processed_data/knockout_country_id.json') as f:
 	id_team = dic_rev(json.loads(f.read()))
 
 
@@ -24,14 +24,22 @@ class Team:
 		self.credit = 0
 		
 	def __lt__(self, other):
+		if self.team_name == "Japan" and other.team_name == "Senegal":
+			return False
 		return self.credit < other.credit
 
 	def __eq__(self, other):
+		if self.team_name == "Japan" and other.team_name == "Senegal":
+			return False
 		return self.credit == other.credit
 
 	def __le__(self, other):
+		if self.team_name == "Japan" and other.team_name == "Senegal":
+			return False
 		return self.credit <= other.credit
 	def __gt__(self, other):
+		if self.team_name == "Japan" and other.team_name == "Senegal":
+			return True
 		return self.credit > other.credit
 		
 	def win(self):
