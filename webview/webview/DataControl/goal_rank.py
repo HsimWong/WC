@@ -1,6 +1,7 @@
 # coding = 'utf-8'
 import PlayOff as po
 from Overall_func import *
+
 p = po.PlayOff()
 total_players = []
 for group in p.groups:
@@ -18,3 +19,4 @@ for player in total_players:
 		print(player.team, end = '\t\t')
 		print(player.name, end = '\t\t\t')
 		print(player.get_goal_number())
+		

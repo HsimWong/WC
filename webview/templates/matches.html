@@ -85,7 +85,7 @@
 		<input type="submit" name="submmit" value="query">
 	</form>
 
-
+	{{ time_info }}
 
 
 
@@ -98,6 +98,7 @@
 					<h1>Group Phase Matches</h1>
 				{% endif %}
 				<td>{{ match.id }}</td>
+				<td>{{ match.start_time }}
 				<td>
 					
 					{% for goal in match.score_list %}

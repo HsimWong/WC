@@ -34,8 +34,7 @@ class Group:
 		self.team_2 = Team(self.group_name + str(2))
 		self.team_3 = Team(self.group_name + str(3))
 		self.games = []
-		# team_dic = {}
-		# Procedure of self.games
+
 		self.team_list = [self.team_0, self.team_1, self.team_2, self.team_3]
 		team_dic = {self.group_name + str(0):self.team_0, 
 				self.group_name + str(1):self.team_1, 

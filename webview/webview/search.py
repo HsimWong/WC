@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from webview.DataControl import Overall_func
+from django.shortcuts import render
 # 表单
 def search_form(request):
 	return render_to_response('index.html')
@@ -18,7 +19,10 @@ def search(request):
 			time += request.GET['time']
 		time += ':00'
 		Overall_func.set_cur_time(str(time))
-		return HttpResponse("Current time: " + str(Overall_func.cur_time))
+		
+		m = "Current time: " + str(Overall_func.cur_time)
+		context = {'time_info': m}
+		return render(request, 'matches.html', context)
 	else:
 		return HttpResponse("Current time not set")
 
