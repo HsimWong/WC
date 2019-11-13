@@ -11,8 +11,8 @@ with open('webview/DataControl/processed_data/teams.json') as f:
 with open('webview/DataControl/processed_data/knockout_country_id.json') as f:
 	team_ind = json.loads(f.read())
 
-with open('webview/DataControl/raw_data/worldcup.json', 'r') as f:
-	raw_info = json.loads(f.read());
+with open('webview/DataControl/Raw_data/worldcup.json', 'r') as f:
+	raw_info = json.loads(f.read())
 
 # goalbelong{"AWAY":}
 '''
